@@ -7,5 +7,7 @@ class Organization < ActiveRecord::Base
 
 	belongs_to :parent, :class_name => 'Organization', :foreign_key => :parent_id
 	has_many :children, :class_name => 'Organization'
+	# for more than many location 
+	serialize :location
 
 end
