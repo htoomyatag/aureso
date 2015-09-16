@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916143628) do
+ActiveRecord::Schema.define(version: 20150916144920) do
 
   create_table "countries", force: true do |t|
     t.string   "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150916143628) do
     t.string   "pricing_policy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "country_id"
+    t.integer  "parent_id"
   end
 
 end
