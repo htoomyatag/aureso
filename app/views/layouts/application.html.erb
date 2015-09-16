@@ -1,14 +1,244 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
 <head>
-  <title>Aureso</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<meta charset="utf-8"/>
+<title>Aureso | Dashboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+
+<%= stylesheet_link_tag 'font-awesome.min.css' %>
+<%= stylesheet_link_tag 'simple-line-icons.min.css' %>
+<%= stylesheet_link_tag 'bootstrap.min.css' %>
+<%= stylesheet_link_tag 'font-awesome.min.css' %>
+<%= stylesheet_link_tag 'simple-line-icons.min.css' %>
+<%= stylesheet_link_tag 'uniform.default.css' %>
+<%= stylesheet_link_tag 'bootstrap-switch.min.css' %>
+<%= stylesheet_link_tag 'daterangepicker-bs3.css' %>
+<%= stylesheet_link_tag 'fullcalendar.min.css' %>
+<%= stylesheet_link_tag 'jqvmap.css' %>
+<%= stylesheet_link_tag 'tasks.css' %>
+<%= stylesheet_link_tag 'components.css' %>
+<%= stylesheet_link_tag 'plugins.css' %>
+<%= stylesheet_link_tag 'layout.css' %>
+<%= stylesheet_link_tag 'darkblue.css' %>
+<%= stylesheet_link_tag 'custom.css' %>
+
+<%= csrf_meta_tags %>
 </head>
-<body>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+<!-- BEGIN HEADER -->
+<div class="page-header navbar navbar-fixed-top">
+	<!-- BEGIN HEADER INNER -->
+	<div class="page-header-inner">
+		<!-- BEGIN LOGO -->
+		<div class="page-logo">
+			<a href="/">
+			<%= image_tag("logo.png", :class =>"logo-default") %>
+			</a>
+			<div class="menu-toggler sidebar-toggler hide">
+			</div>
+		</div>
+		<!-- END LOGO -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+		</a>
+		<!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN TOP NAVIGATION MENU -->
+		<div class="top-menu">
+			<ul class="nav navbar-nav pull-right">
+
+				<li class="dropdown dropdown-user">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<%= image_tag("avatar3_small.jpg", :class =>"img-circle") %>
+					<span class="username username-hide-on-mobile">
+					Admin </span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-default">
+						
+						<li>
+							
+					
+						</li>
+					</ul>
+				</li>
+		
+				<!-- END QUICK SIDEBAR TOGGLER -->
+			</ul>
+		</div>
+		<!-- END TOP NAVIGATION MENU -->
+	</div>
+	<!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+
+<div class="page-container">
+	<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+				<li class="sidebar-toggler-wrapper">
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler">
+					</div>
+					<!-- END SIDEBAR TOGGLER BUTTON -->
+				</li><br/>
+			
+				<li class="start">
+					<a href="/dashboards">
+					<i class="icon-home"></i>
+					<span class="title">Dashboard</span>
+					</a>
+					
+				</li>
+
+				<li class="start">
+					<a href="/airlines">
+					<i class="icon-folder"></i>
+					<span class="title">Airlines</span>
+					</a>				
+				</li>
+
+
+			    <li class="start">
+					<a href="/carlines">
+					<i class="icon-folder"></i>
+					<span class="title">Carlines</span>
+					</a>				
+				</li>
+
+				<li class="start">
+					<a href="/hotels">
+					<i class="icon-folder"></i>
+					<span class="title">Hotels</span>
+					</a>
+				</li>
+
+			    <li class="start">
+				    <a href="/restaurants">
+					<i class="icon-folder"></i>
+					<span class="title">Restaurants</span>
+					</a>				
+				</li>
+
+				<li class="start">
+					<a href="/souvenirs">
+					<i class="icon-folder"></i>
+					<span class="title">Souvenirs</span>
+					</a>
+					
+				</li>
+				
+				<li class="start">
+					<a href="/travel_posts">
+					<i class="icon-folder"></i>
+					<span class="title">TravelPosts</span>
+					</a>
+					
+				</li>
+				
+				
+				
+				
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
 
 <%= yield %>
+</div>
+</div>
 
+
+<div class="page-footer">
+	<div class="page-footer-inner">
+		 2015 &copy; Developed by<a href="http://www.hnttechs.com" target="_blank"> HTOO Myat Aung</a>
+	</div>
+</div>
+
+
+<%= javascript_include_tag "jquery.min.js"  %>
+<%= javascript_include_tag "jquery_ujs.js"  %>
+<%= javascript_include_tag "jquery-migrate.min.js"  %>
+<%= javascript_include_tag "jquery-ui.min.js"  %>
+<%= javascript_include_tag "bootstrap.min.js"  %>
+<%= javascript_include_tag "bootstrap-hover-dropdown.min.js"  %>
+<%= javascript_include_tag "jquery.slimscroll.min.js"  %>
+<%= javascript_include_tag "jquery.blockui.min.js"  %>
+<%= javascript_include_tag "jquery.cokie.min.js"  %>
+<%= javascript_include_tag "jquery.uniform.min.js"  %>
+<%= javascript_include_tag "bootstrap-switch.min.js"  %>
+<%= javascript_include_tag "jquery.vmap.js"  %>
+<%= javascript_include_tag "jquery.vmap.russia.js"  %>
+<%= javascript_include_tag "jquery.vmap.world.js"  %>
+<%= javascript_include_tag "jquery.vmap.europe.js"  %>
+<%= javascript_include_tag "jquery.vmap.germany.js"  %>
+<%= javascript_include_tag "jquery.vmap.usa.js"  %>
+<%= javascript_include_tag "jquery.vmap.sampledata.js"  %>
+<%= javascript_include_tag "jquery.flot.min.js"  %>
+<%= javascript_include_tag "jquery.flot.resize.min.js"  %>
+<%= javascript_include_tag "jquery.flot.categories.min.js"  %>
+<%= javascript_include_tag "jquery.pulsate.min.js"  %>
+<%= javascript_include_tag "moment.min.js"  %>
+<%= javascript_include_tag "daterangepicker.js"  %>
+<%= javascript_include_tag "fullcalendar.min.js"  %>
+<%= javascript_include_tag "jquery.easypiechart.min.js"  %>
+<%= javascript_include_tag "jquery.sparkline.min.js"  %>
+<%= javascript_include_tag "metronic.js"  %>
+<%= javascript_include_tag "layout.js"  %>
+<%= javascript_include_tag "quick-sidebar.js"  %>
+<%= javascript_include_tag "demo.js"  %>
+<%= javascript_include_tag "index.js"  %>
+<%= javascript_include_tag "tasks.js"  %>
+
+
+
+
+<script>
+jQuery(document).ready(function() {    
+   Metronic.init(); // init metronic core componets
+   Layout.init(); // init layout
+   QuickSidebar.init(); // init quick sidebar
+Demo.init(); // init demo features
+   Index.init();   
+   Index.initDashboardDaterange();
+   Index.initJQVMAP(); // init index page's custom scripts
+   Index.initCalendar(); // init index page's custom scripts
+   Index.initCharts(); // init index page's custom scripts
+   Index.initChat();
+   Index.initMiniCharts();
+   Tasks.initDashboardWidget();
+});
+</script>
+<!-- END JAVASCRIPTS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37564768-1', 'keenthemes.com');
+  ga('send', 'pageview');
+</script>
 </body>
+
+<!-- END BODY -->
 </html>

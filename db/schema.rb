@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150916152853) do
   create_table "organizations", force: true do |t|
     t.string   "name"
     t.string   "public_name"
-    t.string   "type"
+    t.string   "organization_type"
     t.string   "pricing_policy"
     t.datetime "created_at"
     t.datetime "updated_at"
