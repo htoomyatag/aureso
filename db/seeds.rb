@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
+# three country myanmar, singapore and japan
  country = Country.create([
 
   {name:"Myanmar", country_code:"+95"},
@@ -89,5 +89,15 @@
   {name:"Org2EOKJP", public_name:"EOK2JP", type:"", pricing_policy:"Show room", country_id:"3", parent_id:"32"},
   {name:"Org3EOKJP", public_name:"EOK3JP", type:"", pricing_policy:"Show room", country_id:"3", parent_id:"33"}
 
+
+])
+
+
+
+ location = Location.create([
+
+  {name:"Yangon", address:"Yangon,Myanmar"},
+  {name:"Jurong", address:"Jurong,Singapore"},
+  {name:"Tokyo", address:"Tokyo,Japan"}
 
 ])
