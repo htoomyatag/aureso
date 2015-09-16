@@ -2,8 +2,6 @@ class Organization < ActiveRecord::Base
 
 	# organization belongs to its country
 	belongs_to :country
-	# organization has many locations
-	has_many :location
 	# type of organizations
 	TYPE = ["Show room", "Service", "Dealer"]
 
