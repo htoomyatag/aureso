@@ -10,3 +10,5 @@ class CreateOrganizations < ActiveRecord::Migration
     end
   end
 end
+
+
