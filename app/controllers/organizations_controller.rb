@@ -25,20 +25,49 @@ class OrganizationsController < ApplicationController
 
      
      @pricing_policy = Organization.where(:id  => params[:org_id]).pluck(:pricing_policy)
+     base_price = params[:base_price]
 
      if @pricing_policy == ["Flexible"]
-      @aok = "this is flex"
+    
+     
+
      elsif @pricing_policy == ["Fixed"]
-      @aok = "this is Fixed"
+     
+      require 'open-uri'
+      doc = Nokogiri::HTML(open("https://developer.github.com/v3/#http-redirects"))
+      
+      text = doc.at('body').inner_text
+      doc.css('script').remove
+      words = doc.at('body').inner_text.scan(/\w+/)
+      words_with_number = pp frequencies(words)
+      words_to_json = words_with_number.to_json
+      words_json = JSON.parse(words_to_json) 
+      get_status_number = words_json['status']
+
+      margin = get_status_number
+      calculate_price = margin.to_i + base_price.to_i
+      
+   
      else
       @aok = "this is Prestige"
      end
 
 
 
-     render :text =>  @aok
+     render :text =>  calculate_price
 
   end
+
+
+
+  require 'pp'
+    def frequencies(words)
+      Hash[
+      words.group_by(&:downcase).map{ |word,instances|
+      [word,instances.length]
+      }.sort_by(&:last).reverse
+      ]
+    end
 
 
   # GET /organizations/1
