@@ -23,19 +23,20 @@ class OrganizationsController < ApplicationController
 
   def api_for_get_calculate_price
 
-     @aok = params[:org_id]+params[:base_price]
+     
+     @pricing_policy = Organization.where(:id  => params[:org_id]).pluck(:pricing_policy)
 
-     if params[:org_id]
-
-     elsif
-
+     if @pricing_policy == ["Flexible"]
+      @aok = "this is flex"
+     elsif @pricing_policy == ["Fixed"]
+      @aok = "this is Fixed"
      else
+      @aok = "this is Prestige"
+     end
 
-      
 
 
-
-     render :text => @aok
+     render :text =>  @aok
 
   end
 
