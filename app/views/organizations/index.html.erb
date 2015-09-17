@@ -27,7 +27,10 @@
             <tbody>
               <% @organizations.each do |organization| %>
                   <tr>
-                    <td><%= organization.name %></td>
+                    <td>
+                     <button type="button" class="btn btn-default btn-sm" id="downfirstorg<%= organization.id %>">+</button>
+                     <%= organization.name %>
+                    </td>
                     <td><%= organization.public_name %></td>
                     <td><%= organization.organization_type %></td>
                     <td><%= organization.pricing_policy %></td>
@@ -35,12 +38,35 @@
                     <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
                     <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
+
+                  <script type="text/javascript">
+  
+                    $('#downfirstorg<%= organization.id %>').on('click', function(){
+                        
+                         $.ajax({
+                                  type: 'get',
+                                  url: 'get_organization',
+                                  dataType: 'JSON',
+                                  data: {'id':"<%= organization.id %>"},
+                                  complete: function(r){
+                                     var raw_data = r.responseText;
+                                     alert(raw_data);
+                                  }
+                               });
+
+                    });
+
+                    </script>
+
+
+
               <% end %>
             </tbody>
           </table>
 
             </div>
 </div>
+
 
 
 

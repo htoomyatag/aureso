@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :organizations
+  get 'get_organization' => 'organizations#get_organization', :as => :get_organization
 
   resources :countries
 

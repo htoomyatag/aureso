@@ -5,8 +5,14 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = Organization.where(parent_id: nil)
   end
+
+  def get_organization
+    @child_organizations = Organization.where(:parent_id  => params[:id])
+    render :json => {:child_organization => @child_organizations }
+  end
+
 
   # GET /organizations/1
   # GET /organizations/1.json
