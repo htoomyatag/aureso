@@ -1,0 +1,50 @@
+<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+							 get calculate price
+				</div>
+			</div>
+			<div class="portlet-body form">
+			<br/><br/><br/>
+
+				<div class="form-inline" style="padding:40px;">
+					  <div class="form-group">
+					    <input type="text" class="form-control"  placeholder="base_price" id="base_price">
+					    <span style="font-size:20px;">/</span>
+					    <input type="text" class="form-control"  placeholder="organization_id" id="org_id">
+					  </div>
+
+					  <button class="btn btn-default" id="cal_price">Calculate Price</button>
+
+				</div>
+					  <input type="text" class="form-control" id="result">
+			<br/><br/><br/>
+
+
+			</div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+								$('#cal_price').click(function(){
+
+									var base_price = document.getElementById("base_price").value;
+                                    var org_id = document.getElementById("org_id").value;
+
+                                      $.ajax({
+                                           type: 'POST',
+                                           url: 'api_for_get_calculate_price',
+                                           data: {'org_id':org_id, 'base_price':base_price},
+                                           complete: function(response){
+                                          
+                                             document.getElementById("result").value =  response.responseText;   
+                                            
+                                            }
+                                         });
+
+                                      // 
+                                    });
+
+</script>

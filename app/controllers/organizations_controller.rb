@@ -5,19 +5,45 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.where(parent_id: nil)
+   @organizations = Organization.where(parent_id: nil)
+        # @organizations = Organization.all
   end
 
   def get_organization
     @child_organizations = Organization.where(:parent_id  => params[:id])
     # render :json => {:child_organization => @child_organizations }.to_json
-    render :json => @child_organizations.as_json(:only => [:name, :public_name, :organization_type])
+    render :json => @child_organizations.as_json(:only => [:id,:name, :public_name, :organization_type])
+  end
+
+
+  def get_calculate_price
+
+  end
+
+
+  def api_for_get_calculate_price
+
+     @aok = params[:org_id]+params[:base_price]
+
+     if params[:org_id]
+
+     elsif
+
+     else
+
+      
+
+
+
+     render :text => @aok
+
   end
 
 
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+        @organizations = Organization.all
   end
 
   # GET /organizations/new

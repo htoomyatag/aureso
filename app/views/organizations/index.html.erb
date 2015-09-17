@@ -18,7 +18,7 @@
             <thead>
               <tr>
                 <th>Organization Info</th>
-                <th colspan="3"></th>
+                <th colspan="1">Get Price</th>
               </tr>
             </thead>
             <tbody>
@@ -36,11 +36,10 @@
 
                      <p>
                      <button type="button" class="btn btn-default btn-sm" id="aok<%= organization.id %>" style="display:none;">+</button>
-                    <span id="id0+<%= organization.id %>"></span></p>
+                      <span id="id0+<%= organization.id %>"></span></p>
+                      <input id="orginput<%= organization.id %>" class="input_org" style="width: 100%;border-style: none;">
                     </td>
-                    <td><%= link_to 'Show', organization %></td>
-                    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-                    <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td>get price</td>
                   </tr>
 
                   <script type="text/javascript">
@@ -68,15 +67,50 @@
                                       out += arr[i]
                                   }
                                   out += "</table>";
+                                  var organizationID = "<%= organization.id %>"
+
+                                  if (organizationID.length == 1) {
+                                      org_id = arr.substring(7, 8);
+                                  } 
+                                  else if (organizationID.length == 2){
+                                     org_id = arr.substring(7, 9);
+                                  }
+                                
+
                                   document.getElementById("id0+<%= organization.id %>").innerHTML = out;
-                                  $('#aok<%= organization.id %>').attr('id','id0<%= organization.id %>'); 
-                                  $('#id0<%= organization.id %>').show();
+                                  
+                                  var org_new_id = 'downsecondorg'+org_id
+                                  $('#aok<%= organization.id %>').attr('id', org_new_id); 
+                                  $('#downsecondorg'+org_id).show();
+
+                                   $('#downsecondorg'+org_id).click(function(){
+                                      // 
+
+                                      $.ajax({
+                                           headers: {'Content-Type': 'application/json'},
+                                           type: 'GET',
+                                           url: 'get_organization',
+                                           dataType: 'JSON',
+                                           data: {'id':org_id},
+                                           complete: function(response){
+                                           
+
+                                             document.getElementById("orginput<%= organization.id %>").value =  response.responseText;   
+                                            
+                                            }
+                                         });
+
+                                      // 
+                                    });
+
+
                           }});
                       });
                   });
   
                    
                     </script>
+
 
 
 

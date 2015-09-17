@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :organizations
   get 'get_organization' => 'organizations#get_organization', :as => :get_organization
+  get 'get_calculate_price' => 'organizations#get_calculate_price'
+  post 'api_for_get_calculate_price' => 'organizations#api_for_get_calculate_price', :as => :api_for_get_calculate_price
 
   resources :countries
 
