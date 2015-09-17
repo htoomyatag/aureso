@@ -10,7 +10,8 @@ class OrganizationsController < ApplicationController
 
   def get_organization
     @child_organizations = Organization.where(:parent_id  => params[:id])
-    render :json => {:child_organization => @child_organizations }
+    # render :json => {:child_organization => @child_organizations }.to_json
+    render :json => @child_organizations.as_json(:only => [:name, :public_name, :organization_type])
   end
 
 

@@ -14,13 +14,10 @@
                 <%= link_to 'New Organization', new_organization_path, :class => "btn btn-default" %>
 
           </p>
-          <table class="table table-bordered" style="padding:30px;">
+          <table class="table table-bordered" style="padding:30px;" id="organization_table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Public name</th>
-                <th>Type</th>
-                <th>Pricing policy</th>
+                <th>Organization Info</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -28,34 +25,57 @@
               <% @organizations.each do |organization| %>
                   <tr>
                     <td>
-                     <button type="button" class="btn btn-default btn-sm" id="downfirstorg<%= organization.id %>">+</button>
-                     <%= organization.name %>
+                   
+                     <p>
+                       <button type="button" class="btn btn-default btn-sm" id="downfirstorg<%= organization.id %>">+</button>
+                     <b>Name:</b><%= organization.name %>, 
+                     <b>Public Name:</b><%= organization.public_name %>,
+                     <b>Type:</b> <%= organization.organization_type %>,
+                     <b>Pricing Policy </b><%= organization.pricing_policy %>.
+                     </p>
+
+                     <p>
+                     <button type="button" class="btn btn-default btn-sm" id="aok<%= organization.id %>" style="display:none;">+</button>
+                    <span id="id0+<%= organization.id %>"></span></p>
                     </td>
-                    <td><%= organization.public_name %></td>
-                    <td><%= organization.organization_type %></td>
-                    <td><%= organization.pricing_policy %></td>
                     <td><%= link_to 'Show', organization %></td>
                     <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
                     <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
 
                   <script type="text/javascript">
-  
-                    $('#downfirstorg<%= organization.id %>').on('click', function(){
-                        
-                         $.ajax({
-                                  type: 'get',
-                                  url: 'get_organization',
-                                  dataType: 'JSON',
-                                  data: {'id':"<%= organization.id %>"},
-                                  complete: function(r){
-                                     var raw_data = r.responseText;
-                                     alert(raw_data);
+
+                  $(document).ready(function(){
+
+                      $("#downfirstorg<%= organization.id %>").click(function(){
+                          $.ajax({ 
+                               headers: {'Content-Type': 'application/json'},
+                               type: 'GET',
+                               url: 'get_organization',
+                               dataType: 'JSON',
+                               data: {'id':"<%= organization.id %>"},
+                               complete: function(response) {
+                                
+                                  var aok = response.responseText;
+                                  var data = JSON.stringify(aok);
+                                  arr = JSON.parse(data);
+                           
+
+                                  var i;
+                                  var out = "<table>";
+
+                                  for(i = 0; i < arr.length; i++) {
+                                      out += arr[i]
                                   }
-                               });
-
-                    });
-
+                                  out += "</table>";
+                                  document.getElementById("id0+<%= organization.id %>").innerHTML = out;
+                                  $('#aok<%= organization.id %>').attr('id','id0<%= organization.id %>'); 
+                                  $('#id0<%= organization.id %>').show();
+                          }});
+                      });
+                  });
+  
+                   
                     </script>
 
 
