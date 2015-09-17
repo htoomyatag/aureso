@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150916152853) do
     t.datetime "updated_at"
     t.integer  "country_id"
     t.integer  "parent_id"
-    t.text     "location",          array: true
+    t.text     "location"
   end
 
 end
