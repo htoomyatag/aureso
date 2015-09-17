@@ -49,7 +49,21 @@ class OrganizationsController < ApplicationController
       
    
      else
-      @aok = "this is Prestige"
+      
+      require 'nokogiri'
+      require 'open-uri'
+      require 'awesome_print'
+      require 'pp'
+
+      doc = Nokogiri::XML(open("http://www.yourlocalguardian.co.uk/sport/rugby/rss/"))
+      pub = pp doc.xpath("//*").map(&:name).each_with_object({}) {|n, r| r[n] = (r[n] || 0) + 1 }
+      pub_to_json = pub.to_json
+      pub_json = JSON.parse(pub_to_json) 
+      get_pub_number = pub_json['pubDate']
+
+      margin = get_pub_number
+      calculate_price = margin.to_i + base_price.to_i
+    
      end
 
 
@@ -68,6 +82,8 @@ class OrganizationsController < ApplicationController
       }.sort_by(&:last).reverse
       ]
     end
+
+
 
 
   # GET /organizations/1
