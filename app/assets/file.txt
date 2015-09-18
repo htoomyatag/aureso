@@ -1,1 +1,5 @@
-aok
+display:none;visibility:hidden
+position: absolute;overflow:hidden;
+position:relative;left:210px; 
+margin-bottom:10px;
+display:none;

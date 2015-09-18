@@ -37,9 +37,31 @@ class OrganizationsController < ApplicationController
       css_value = doc.xpath('@style|.//@style').remove
       words = doc.at('body').inner_text.scan(/\w+/)
 
-      file = File.open("/#{Rails.root}/app/assets/file.txt", "w")
-      file.write('aok')
-    
+      directory = "/#{Rails.root}/app/assets/"
+
+      File.open(File.join(directory, 'file2.txt'), 'w') do |f|
+        f.puts words
+      end
+
+      word_contents = File.read("/#{Rails.root}/app/assets/file2.txt")
+      all_a = word_contents.count("a")
+
+
+      File.open(File.join(directory, 'file.txt'), 'w') do |f|
+        f.puts css_value
+      end
+
+      contents = File.read("/#{Rails.root}/app/assets/file.txt")
+      clean_content1 = contents.gsub(":",",")
+      clean_content2 = clean_content1.gsub(";",",")
+
+      content_arr = clean_content2.scan /\w/
+      css_number_of_a = content_arr.count('a') 
+
+      number_of_letter_a = all_a.to_i - css_number_of_a.to_i
+      margin = number_of_letter_a/100
+
+      calculate_price = margin.to_i + base_price.to_i
 
 
      elsif @pricing_policy == ["Fixed"]
