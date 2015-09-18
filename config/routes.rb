@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  devise_for :admins, :controllers => {:sessions => "admins/sessions", :registrations => "admins/registrations"}
+  resources :admins
+
   resources :locations
 
   resources :organizations
@@ -7,6 +11,8 @@ Rails.application.routes.draw do
   post 'api_for_get_calculate_price' => 'organizations#api_for_get_calculate_price', :as => :api_for_get_calculate_price
 
   resources :countries
+
+  root :to => redirect("/admins/sign_in")
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

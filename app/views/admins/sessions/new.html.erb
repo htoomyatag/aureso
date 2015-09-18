@@ -1,0 +1,44 @@
+
+<%= stylesheet_link_tag 'bootstrap.min.css' %>
+
+<div class="row">
+  <div class="col-xs-6 col-md-4"></div>
+  <div class="col-xs-6 col-md-4">
+  <br/><br/><br/><br/><br/>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Admin - Aureso content management system</div>
+  <div class="panel-body">
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+            <div class="form-group">
+              <label >Username</label>
+              <div>
+                <%= f.text_field :username, autofocus: true,  :class=>"form-control",:placeholder=>"Username" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div>
+                <%= f.password_field :password, autocomplete: "off", :class=>"form-control" , :placeholder=>"Password" %>
+              </div>
+            </div>
+           <br>
+            <div class="form-group">
+              <div >
+                 <%= f.submit "Log in", :class=>"btn btn-default" %>
+              </div>
+            </div>
+         <% end %>
+
+
+      </div>
+      </div>  
+    </div>
+  <div class="col-xs-6 col-md-4"></div>
+</div>
+
+

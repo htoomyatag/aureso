@@ -101,3 +101,13 @@
   {name:"Tokyo", address:"Tokyo,Japan"}
 
 ])
+
+
+
+
+admin = Admin.create([
+
+{username: "htoomyataung", email: "htoomyatag.webdev@gmail.com", password: "privatehma", password_confirmation: "privatehma"},
+{username: "aureso", email: "auresoaureso@gmail.com", password: "aureso123", password_confirmation: "aureso123"},
+
+])
