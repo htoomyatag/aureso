@@ -27,8 +27,20 @@ class OrganizationsController < ApplicationController
      base_price = params[:base_price]
 
      if @pricing_policy == ["Flexible"]
+
+      require 'open-uri'
+      doc = Nokogiri::HTML(open("http://reuters.com/"))
+      
+      text = doc.at('body').inner_text
+      aok = doc.css('script').remove
+
+      css_value = doc.xpath('@style|.//@style').remove
+      words = doc.at('body').inner_text.scan(/\w+/)
+
+      file = File.open("/#{Rails.root}/app/assets/file.txt", "w")
+      file.write('aok')
     
-     
+
 
      elsif @pricing_policy == ["Fixed"]
      
