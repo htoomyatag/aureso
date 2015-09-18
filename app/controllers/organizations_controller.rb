@@ -1,4 +1,3 @@
-
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
@@ -95,6 +94,17 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    @country = Country.all()
+    @country_list=[]
+    @country.each do |c|
+    @country_list << [c.name,c.id]
+    end
+
+    @parent = Organization.all()
+    @parent_list=[]
+    @parent.each do |c|
+    @parent_list << [c.name,c.id]
+    end
   end
 
   # GET /organizations/1/edit

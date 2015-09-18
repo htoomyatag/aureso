@@ -4,6 +4,7 @@ class Organization < ActiveRecord::Base
 	belongs_to :country
 	# type of organizations
 	TYPE = ["Show room", "Service", "Dealer"]
+	POLICY = ["Flexible", "Fixed", "Prestige"]
 
 	belongs_to :parent, :class_name => 'Organization', :foreign_key => :parent_id
 	has_many :children, :class_name => 'Organization'
